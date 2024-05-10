@@ -1,35 +1,15 @@
-/* The MIT License (MIT)
 
-Copyright (c) 2020 thradams
-https://github.com/thradams/conio
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.*/
+int __text_color = 0;//BLACK;
+int __text_back  = 14;//WHITE;
 
 #ifdef _WIN32
-
 #include <windows.h>
+#include <wincon.h>
 #include <conio.h>
 #include "conio.h"
 #include <limits.h>
 #include <stdbool.h>
 
-/* MinGW */
 #ifndef ENABLE_VIRTUAL_TERMINAL_PROCESSING
 #define ENABLE_VIRTUAL_TERMINAL_PROCESSING 0x0004
 #endif
@@ -121,6 +101,7 @@ int c_getche(void)
   return _getche();
 }
 
+
 void c_setcursortype(int cur_t)
 {
   CONSOLE_CURSOR_INFO ci;
@@ -149,11 +130,13 @@ void c_setcursortype(int cur_t)
 
 void c_textattr(int newattr)
 {
+  __text_color = newattr;
   SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), newattr);
 }
 
 void c_textbackground(int newcolor)
 {
+  __text_back = newcolor;
   struct text_info ti;
   c_gettextinfo(&ti);
   unsigned char wColor = ti.attribute;
@@ -218,7 +201,8 @@ void c_clrscr()
 
 
 
-#elif __linux__
+//#elif __linux__
+#else
 
 
 #include <stdio.h>
@@ -312,7 +296,7 @@ void c_clrscr()
 void c_textcolor(int newcolor)
 {
   //https://en.wikipedia.org/wiki/ANSI_escape_code
-
+  __text_color = newcolor; // noj
   const char * s = "\x1b[30m";
 
   switch (newcolor)
@@ -392,7 +376,7 @@ void c_textcolor(int newcolor)
 void c_textbackground(int newcolor)
 {
   //https://en.wikipedia.org/wiki/ANSI_escape_code
-
+  __text_back = newcolor; // noj
   const char * s = "\x1b[40m";
 
   switch (newcolor)
@@ -577,3 +561,13 @@ void c_textattr(int newattr)
 }
 
 #endif //linux
+
+
+int noj_gettextcolor() {
+  return __text_color;
+}
+
+int noj_gettextbackgroundcolor() {
+  return __text_back;
+}
+

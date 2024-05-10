@@ -16,13 +16,11 @@ void Test1()
   c_getch();
   c_clrscr();
   printf("The screen has been cleared!");
-  c_getch();  
+  c_getch();
 }
-
 
 void Test2()
 {
-
   struct text_info ti;
   c_gettextinfo(&ti);
   printf("attribute        %2d\r\n", ti.attribute);
@@ -31,21 +29,20 @@ void Test2()
   printf("screen width     %2d\r\n", ti.screenwidth);
   printf("current x        %2d\r\n", ti.curx);
   printf("current y        %2d\r\n", ti.cury);
-
 }
 
 void Test3()
 {
   /*
-  Gets character from keyboard, does not echo to screen. 
-  getch reads a single character directly from the keyboard, 
+  Gets character from keyboard, does not echo to screen.
+  getch reads a single character directly from the keyboard,
   without echoing to the screen
   */
 
   int c;
   int extended = 0;
   c = c_getch();
-  
+
   if (!c)
     extended = c_getch();
   if (extended)
@@ -63,8 +60,6 @@ void Test4()
   {
     printf("\nYou input a '%c'\n", ch);
   }
- 
-
 }
 
 void Test5()
@@ -86,24 +81,23 @@ void Test6()
   c_getch();
 }
 
-void  Test7()
+void Test7()
 {
   printf("Press any key to continue:");
   while (!c_kbhit())
   {
   }
-  
-  printf("\r\nA key was pressed...\r\n"); 
-  
+
+  printf("\r\nA key was pressed...\r\n");
 }
 int main(void)
 {
-  //Test1();
-  //Test2();
+  Test1();
+  Test2();
   Test3();
-  //Test4();
-  //Test5();
-  //Test6();
-  //Test7();
+  Test4();
+  Test5();
+  Test6();
+  Test7();
   return 0;
 }

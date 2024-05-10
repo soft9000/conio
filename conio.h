@@ -1,27 +1,4 @@
-/* The MIT License (MIT)
-
-Copyright (c) 2020 thradams
-https://github.com/thradams/conio
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.*/
 #pragma once
-
 
 enum COLORS
 {
@@ -61,8 +38,6 @@ struct text_info
   int cury;           /* y-coordinate in current window */
 };
 
-
-
 int   c_getch(void);
 int   c_getche(void);
 int   c_kbhit(void);
@@ -70,10 +45,11 @@ int   c_kbhit(void);
 void  c_clrscr();
 void  c_gotoxy(int x, int y);
 void  c_setcursortype(int cur_t);
-void  c_textbackground(int newcolor);
-void  c_textcolor(int newcolor);
+void  c_textbackground(int color);
+void  c_textcolor(int color);
 int   c_wherex(void);
 int   c_wherey(void);
 void  c_gettextinfo(struct text_info *r);
 void  c_textattr(int newattr);
-
+int noj_gettextcolor(void);
+int noj_gettextbackgroundcolor(void);
