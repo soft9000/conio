@@ -14,7 +14,7 @@ Here is [the way we were](http://docs.embarcadero.com/products/rad_studio/radstu
 ## Updates
 After contributing to the upstream, wanteeded (want + needed =) to add a few expere'mentals:
 
-(1) Support for cyswin64
+(1) Support for cygwin64
 
 (2) Multi-platform Makefile
 
