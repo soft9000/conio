@@ -1,15 +1,16 @@
-# Turbo C like <conio.h> for windows and Linux
-
-This library implements (parts) the of old Turbo C conio.h
-See header file for suported functions.
-
-To avoid name conflicts a prefix "c_" was added into the original functions.
-
+# Turbo C like <conio.h> for Windows, Linux & macOS
+This library implements (parts) the of old Turbo C conio.h. Kudos to [Thiago Adams](https://github.com/thradams/conio) for taking this one off of my life's bucket list!
 
 ## Original documentation:
-
 http://docs.embarcadero.com/products/rad_studio/radstudio2007/RS2007_helpupdates/HUpdate4/EN/html/devwin32/coniohpart_xml.html
 
+## Updates
+After contributing to the upstream, wanteeded (want + needed =) to add a few expere'mentals:
 
-## Windows 10
-Obs: Windows 10 suports console virtual terminal sequences
+(1) Support for cyswin64
+(2) Multi-platform Makefile
+(3) Cache / recall default colors
+
+Will be part of my new educational opportunity - stay tuned!
+
+
