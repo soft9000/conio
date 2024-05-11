@@ -10,7 +10,7 @@ opts=-D__linux__
 exe=.run
 endif
 
-all: main$(exe)
+all: main$(exe) conio.a
 
 conio.o: $(deps)
 	$(cc) $(opts) -c conio.c
@@ -18,7 +18,11 @@ conio.o: $(deps)
 main$(exe): $(deps) conio.o main.c
 	$(cc) $(opts) main.c conio.o -o main$(exe)
 
+conio.a: conio.o
+	ar rcs conio.a conio.o
+
 clean:
 	rm -f *.o
+	rm -f *.a
 	rm -f *$(exe)
 
