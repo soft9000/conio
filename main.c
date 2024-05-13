@@ -108,14 +108,39 @@ void Test7()
 
   printf("\r\nA key was pressed...\r\n");
 }
+
+void Test8()
+{
+  char buffer[10];
+  c_textcolor(YELLOW);
+  c_textbackground(GREEN);
+  c_clrscr();
+  c_gotoxy(10, 10);
+  printf("(10,10)\n\n");
+  printf("Press enter key to continue:");
+  fgets(buffer, 9, stdin);
+  int foo = noj_gettextcolor();
+  int bar = noj_gettextbackgroundcolor();
+  c_textcolor(RED);
+  c_textbackground(BLUE);
+  c_gotoxy(10, 10);
+  printf("(10,10)\n\n");
+  c_textcolor(foo);
+  //c_textbackground(bar); // odd - adds a newline?
+  printf("Press enter key to continue:");
+  fgets(buffer, 9, stdin);
+  c_textbackground(bar); // odd - adds a newline? 
+}
+
 int main(void)
 {
-  Test1();
-  Test2();
-  Test3();
-  Test4();
-  Test5();
-  Test6();
-  Test7();
+  // Test1();
+  // Test2();
+  // Test3();
+  // Test4();
+  // Test5();
+  // Test6();
+  // Test7();
+  Test8();
   return 0;
 }
